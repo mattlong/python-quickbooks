@@ -8,18 +8,18 @@ class TaxCodeTests(unittest.TestCase):
         taxcode = TaxCode()
         taxcode.Name = "test"
 
-        self.assertEquals(str(taxcode), "test")
+        self.assertEqual(str(taxcode), "test")
 
 class TaxRateDetailTests(unittest.TestCase):
     def test_init(self):
         tax_rate = TaxRateDetail()
 
-        self.assertEquals(tax_rate.TaxOrder, 0)
-        self.assertEquals(tax_rate.TaxTypeApplicable, "")
+        self.assertEqual(tax_rate.TaxOrder, 0)
+        self.assertEqual(tax_rate.TaxTypeApplicable, "")
 
 
 class TaxRateListTests(unittest.TestCase):
     def test_init(self):
         tax_rate_list = TaxRateList()
 
-        self.assertEquals(tax_rate_list.TaxRateDetail, [])
+        self.assertEqual(tax_rate_list.TaxRateDetail, [])

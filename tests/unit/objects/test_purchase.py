@@ -9,7 +9,7 @@ class AccountBasedExpenseLineDetailTests(unittest.TestCase):
         detail = AccountBasedExpenseLineDetail()
         detail.BillableStatus = "Test"
 
-        self.assertEquals(str(detail), "Test")
+        self.assertEqual(str(detail), "Test")
 
 
 class PurchaseLineTests(unittest.TestCase):
@@ -17,7 +17,7 @@ class PurchaseLineTests(unittest.TestCase):
         purchase_line = PurchaseLine()
         purchase_line.Amount = 100
 
-        self.assertEquals(str(purchase_line), "100")
+        self.assertEqual(str(purchase_line), "100")
 
 
 class PurchaseTests(unittest.TestCase):
@@ -25,20 +25,20 @@ class PurchaseTests(unittest.TestCase):
         purchase = Purchase()
         purchase.TotalAmt = 1000
 
-        self.assertEquals(str(purchase), "1000")
+        self.assertEqual(str(purchase), "1000")
 
 
 class ItemBasedExpenseLineDetailTest(unittest.TestCase):
     def test_init(self):
         item_detail = ItemBasedExpenseLineDetail()
 
-        self.assertEquals(item_detail.UnitPrice, 0)
-        self.assertEquals(item_detail.Qty, 0)
-        self.assertEquals(item_detail.BillableStatus, "")
-        self.assertEquals(item_detail.TaxInclusiveAmt, 0)
-        self.assertEquals(item_detail.ItemRef, None)
-        self.assertEquals(item_detail.ClassRef, None)
-        self.assertEquals(item_detail.PriceLevelRef, None)
-        self.assertEquals(item_detail.TaxCodeRef, None)
-        self.assertEquals(item_detail.CustomerRef, None)
-        self.assertEquals(item_detail.MarkupInfo, None)
+        self.assertEqual(item_detail.UnitPrice, 0)
+        self.assertEqual(item_detail.Qty, 0)
+        self.assertEqual(item_detail.BillableStatus, "")
+        self.assertEqual(item_detail.TaxInclusiveAmt, 0)
+        self.assertEqual(item_detail.ItemRef, None)
+        self.assertEqual(item_detail.ClassRef, None)
+        self.assertEqual(item_detail.PriceLevelRef, None)
+        self.assertEqual(item_detail.TaxCodeRef, None)
+        self.assertEqual(item_detail.CustomerRef, None)
+        self.assertEqual(item_detail.MarkupInfo, None)

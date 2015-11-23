@@ -8,4 +8,4 @@ class PaymentMethodTests(unittest.TestCase):
         payment_method = PaymentMethod()
         payment_method.Name = "test"
 
-        self.assertEquals(str(payment_method), "test")
+        self.assertEqual(str(payment_method), "test")

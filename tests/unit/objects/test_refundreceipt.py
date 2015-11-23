@@ -8,4 +8,4 @@ class RefundReceiptTests(unittest.TestCase):
         deposit = RefundReceipt()
         deposit.TotalAmt = 100
 
-        self.assertEquals(str(deposit), "100")
+        self.assertEqual(str(deposit), "100")

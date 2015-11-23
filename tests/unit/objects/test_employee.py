@@ -8,7 +8,7 @@ class EmployeeTests(unittest.TestCase):
         employee = Employee()
         employee.DisplayName = "test"
 
-        self.assertEquals(str(employee), "test")
+        self.assertEqual(str(employee), "test")
 
     def test_to_ref(self):
         employee = Employee()
@@ -17,6 +17,6 @@ class EmployeeTests(unittest.TestCase):
 
         ref = employee.to_ref()
 
-        self.assertEquals(ref.name, "test")
-        self.assertEquals(ref.type, "Employee")
-        self.assertEquals(ref.value, 100)
+        self.assertEqual(ref.name, "test")
+        self.assertEqual(ref.type, "Employee")
+        self.assertEqual(ref.value, 100)

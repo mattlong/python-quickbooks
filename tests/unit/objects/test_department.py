@@ -8,7 +8,7 @@ class DepartmentTests(unittest.TestCase):
         department = Department()
         department.Name = "test"
 
-        self.assertEquals(str(department), "test")
+        self.assertEqual(str(department), "test")
 
     def test_to_ref(self):
         department = Department()
@@ -17,6 +17,6 @@ class DepartmentTests(unittest.TestCase):
 
         dept_ref = department.to_ref()
 
-        self.assertEquals(dept_ref.name, "test")
-        self.assertEquals(dept_ref.type, "Department")
-        self.assertEquals(dept_ref.value, 100)
+        self.assertEqual(dept_ref.name, "test")
+        self.assertEqual(dept_ref.type, "Department")
+        self.assertEqual(dept_ref.value, 100)

@@ -8,7 +8,7 @@ class AccountBasedExpenseLineDetailTests(unittest.TestCase):
         acct_detail = AccountBasedExpenseLineDetail()
         acct_detail.BillableStatus = "test"
 
-        self.assertEquals(str(acct_detail), "test")
+        self.assertEqual(str(acct_detail), "test")
 
 
 class BillTests(unittest.TestCase):
@@ -16,7 +16,7 @@ class BillTests(unittest.TestCase):
         bill = Bill()
         bill.Balance = 1000
 
-        self.assertEquals(str(bill), "1000")
+        self.assertEqual(str(bill), "1000")
 
 
 class BillLineTests(unittest.TestCase):
@@ -24,20 +24,20 @@ class BillLineTests(unittest.TestCase):
         bill_line = BillLine()
         bill_line.Amount = 1000
 
-        self.assertEquals(str(bill_line), "1000")
+        self.assertEqual(str(bill_line), "1000")
 
 
 class ItemBasedExpenseLineDetailTest(unittest.TestCase):
     def test_init(self):
         detail = ItemBasedExpenseLineDetail()
 
-        self.assertEquals(detail.BillableStatus, "")
-        self.assertEquals(detail.UnitPrice, 0)
-        self.assertEquals(detail.TaxInclusiveAmt, 0)
-        self.assertEquals(detail.Qty, 0)
-        self.assertEquals(detail.ItemRef, None)
-        self.assertEquals(detail.ClassRef, None)
-        self.assertEquals(detail.PriceLevelRef, None)
-        self.assertEquals(detail.TaxCodeRef, None)
-        self.assertEquals(detail.MarkupInfo, None)
-        self.assertEquals(detail.CustomerRef, None)
+        self.assertEqual(detail.BillableStatus, "")
+        self.assertEqual(detail.UnitPrice, 0)
+        self.assertEqual(detail.TaxInclusiveAmt, 0)
+        self.assertEqual(detail.Qty, 0)
+        self.assertEqual(detail.ItemRef, None)
+        self.assertEqual(detail.ClassRef, None)
+        self.assertEqual(detail.PriceLevelRef, None)
+        self.assertEqual(detail.TaxCodeRef, None)
+        self.assertEqual(detail.MarkupInfo, None)
+        self.assertEqual(detail.CustomerRef, None)

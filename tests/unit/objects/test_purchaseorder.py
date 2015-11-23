@@ -8,7 +8,7 @@ class PurchaseOrderLineTests(unittest.TestCase):
         purchase_line = PurchaseOrderLine()
         purchase_line.Amount = 100
 
-        self.assertEquals(str(purchase_line), '100')
+        self.assertEqual(str(purchase_line), '100')
 
 
 class PurchaseOrderTests(unittest.TestCase):
@@ -16,19 +16,19 @@ class PurchaseOrderTests(unittest.TestCase):
         purchase_order = PurchaseOrder()
         purchase_order.TotalAmt = 1000
 
-        self.assertEquals(str(purchase_order), '1000')
+        self.assertEqual(str(purchase_order), '1000')
 
 
 class ItemBasedExpenseLineDetailTests(unittest.TestCase):
     def test_init(self):
         detail = ItemBasedExpenseLineDetail()
 
-        self.assertEquals(detail.UnitPrice, 0)
-        self.assertEquals(detail.Qty, 0)
-        self.assertEquals(detail.BillableStatus, "")
-        self.assertEquals(detail.TaxInclusiveAmt, 0)
-        self.assertEquals(detail.PriceLevelRef, None)
-        self.assertEquals(detail.CustomerRef, None)
-        self.assertEquals(detail.ClassRef, None)
-        self.assertEquals(detail.TaxCodeRef, None)
-        self.assertEquals(detail.MarkupInfo, None)
+        self.assertEqual(detail.UnitPrice, 0)
+        self.assertEqual(detail.Qty, 0)
+        self.assertEqual(detail.BillableStatus, "")
+        self.assertEqual(detail.TaxInclusiveAmt, 0)
+        self.assertEqual(detail.PriceLevelRef, None)
+        self.assertEqual(detail.CustomerRef, None)
+        self.assertEqual(detail.ClassRef, None)
+        self.assertEqual(detail.TaxCodeRef, None)
+        self.assertEqual(detail.MarkupInfo, None)

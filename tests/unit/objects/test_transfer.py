@@ -8,4 +8,4 @@ class TaxAgencyTests(unittest.TestCase):
         transfer = Transfer()
         transfer.Amount = 100
 
-        self.assertEquals(str(transfer), "100")
+        self.assertEqual(str(transfer), "100")

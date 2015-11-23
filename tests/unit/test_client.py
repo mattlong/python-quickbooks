@@ -24,13 +24,13 @@ class ClientTest(unittest.TestCase):
             verbose=True
         )
 
-        self.assertEquals(self.qb_client.sandbox, False)
-        self.assertEquals(self.qb_client.consumer_key, "consumer_key")
-        self.assertEquals(self.qb_client.consumer_secret, "consumer_secret")
-        self.assertEquals(self.qb_client.access_token, "access_token")
-        self.assertEquals(self.qb_client.access_token_secret, "access_token_secret")
-        self.assertEquals(self.qb_client.company_id, "company_id")
-        self.assertEquals(self.qb_client.callback_url, "callback_url")
+        self.assertEqual(self.qb_client.sandbox, False)
+        self.assertEqual(self.qb_client.consumer_key, "consumer_key")
+        self.assertEqual(self.qb_client.consumer_secret, "consumer_secret")
+        self.assertEqual(self.qb_client.access_token, "access_token")
+        self.assertEqual(self.qb_client.access_token_secret, "access_token_secret")
+        self.assertEqual(self.qb_client.company_id, "company_id")
+        self.assertEqual(self.qb_client.callback_url, "callback_url")
 
     def test_client_updated(self):
         self.qb_client = client.QuickBooks(
@@ -53,21 +53,21 @@ class ClientTest(unittest.TestCase):
             callback_url="update_callback_url",
         )
 
-        self.assertEquals(self.qb_client.sandbox, True)
-        self.assertEquals(self.qb_client.consumer_key, "update_consumer_key")
-        self.assertEquals(self.qb_client.consumer_secret, "update_consumer_secret")
-        self.assertEquals(self.qb_client.access_token, "update_access_token")
-        self.assertEquals(self.qb_client.access_token_secret, "update_access_token_secret")
-        self.assertEquals(self.qb_client.company_id, "update_company_id")
-        self.assertEquals(self.qb_client.callback_url, "update_callback_url")
+        self.assertEqual(self.qb_client.sandbox, True)
+        self.assertEqual(self.qb_client.consumer_key, "update_consumer_key")
+        self.assertEqual(self.qb_client.consumer_secret, "update_consumer_secret")
+        self.assertEqual(self.qb_client.access_token, "update_access_token")
+        self.assertEqual(self.qb_client.access_token_secret, "update_access_token_secret")
+        self.assertEqual(self.qb_client.company_id, "update_company_id")
+        self.assertEqual(self.qb_client.callback_url, "update_callback_url")
 
-        self.assertEquals(self.qb_client2.sandbox, True)
-        self.assertEquals(self.qb_client2.consumer_key, "update_consumer_key")
-        self.assertEquals(self.qb_client2.consumer_secret, "update_consumer_secret")
-        self.assertEquals(self.qb_client2.access_token, "update_access_token")
-        self.assertEquals(self.qb_client2.access_token_secret, "update_access_token_secret")
-        self.assertEquals(self.qb_client2.company_id, "update_company_id")
-        self.assertEquals(self.qb_client2.callback_url, "update_callback_url")
+        self.assertEqual(self.qb_client2.sandbox, True)
+        self.assertEqual(self.qb_client2.consumer_key, "update_consumer_key")
+        self.assertEqual(self.qb_client2.consumer_secret, "update_consumer_secret")
+        self.assertEqual(self.qb_client2.access_token, "update_access_token")
+        self.assertEqual(self.qb_client2.access_token_secret, "update_access_token_secret")
+        self.assertEqual(self.qb_client2.company_id, "update_company_id")
+        self.assertEqual(self.qb_client2.callback_url, "update_callback_url")
 
     def test_api_url(self):
         qb_client = client.QuickBooks(sandbox=False)
@@ -85,7 +85,7 @@ class ClientTest(unittest.TestCase):
         qb_client = client.QuickBooks()
         result = qb_client.isvalid_object_name("Customer")
 
-        self.assertEquals(result, True)
+        self.assertEqual(result, True)
 
     def test_isvalid_object_name_invalid(self):
         qb_client = client.QuickBooks()

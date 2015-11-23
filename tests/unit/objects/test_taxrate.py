@@ -8,4 +8,4 @@ class TaxCodeTests(unittest.TestCase):
         tax = TaxRate()
         tax.Name = "test"
 
-        self.assertEquals(str(tax), "test")
+        self.assertEqual(str(tax), "test")

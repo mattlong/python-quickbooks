@@ -12,7 +12,7 @@ class ToJsonMixinTest(unittest.TestCase):
 
         json = phone.to_json()
 
-        self.assertEquals(json, '{\n    "FreeFormNumber": "555-555-5555"\n}')
+        self.assertEqual(json, '{\n    "FreeFormNumber": "555-555-5555"\n}')
 
 
 class ListMixinTest(unittest.TestCase):
