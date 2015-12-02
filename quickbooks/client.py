@@ -116,10 +116,10 @@ class QuickBooks(object):
         response = self.qbService.get_raw_request_token(
            params={'oauth_callback': self.callback_url})
 
-        content = str.split(response.content, '&')
+        content = response.text.split('&')
 
-        self.request_token = str.split(content[2], "=")[1]
-        self.request_token_secret = str.split(content[0], "=")[1]
+        self.request_token = content[2].split("=")[1]
+        self.request_token_secret = content[0].split("=")[1]
         #self.request_token, self.request_token_secret = self.qbService.get_raw_request_token(
         #   params={'oauth_callback': self.callback_url})
 
@@ -171,8 +171,10 @@ class QuickBooks(object):
         except:
             raise QuickbooksException("Error reading json response", 10000)
 
-        if req.status_code is not httplib.OK or "Fault" in result:
+        if result.get("Fault"):
             self.handle_exceptions(result["Fault"])
+        elif req.status_code is not int(httplib.OK):
+            raise QuickbooksException("Non-200 status code %s from request" % (req.status_code,))
         else:
             return result
 
@@ -192,9 +194,9 @@ class QuickBooks(object):
             if "Detail" in error:
                 detail = error["Detail"]
 
-            code = ""
+            code = 0
             if "code" in error:
-                code = error["code"]
+                code = int(error["code"])
 
             if code >= 10000:
                 raise SevereException(message, code, detail)
