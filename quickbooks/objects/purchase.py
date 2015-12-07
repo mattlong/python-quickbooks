@@ -17,6 +17,8 @@ class AccountBasedExpenseLineDetail(QuickbooksBaseObject):
 
     def __init__(self):
         super(AccountBasedExpenseLineDetail, self).__init__()
+        # Billable status is applicable only when there is CustomerRef passed in the request and applicable to the specific account types: 1. Expense 2. Other Expense 3. Cost of Goods Sold
+        # See https://developer.intuit.com/docs/95_legacy/qbd_v3/qbd_v3_reference/030_entity_services_reference/purchase for details
         self.BillableStatus = ""
         self.ClassRef = None
         self.AccountRef = None

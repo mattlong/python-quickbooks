@@ -4,15 +4,33 @@ from .client import QuickBooks
 
 
 class ToJsonMixin(object):
-    def to_json(self):
-        return json.dumps(self, default=self.json_filter(), sort_keys=True, indent=4)
+    def set(self, key, value):
+        try:
+            self.__tojson_dirty.add(key)
+        except AttributeError:
+            self.__tojson_dirty = set()
+            self.__tojson_dirty.add(key)
 
-    def json_filter(self):
-        """
-        filter out properties that have names starting with _ or properties that have a value of None
-        """
-        return lambda obj: dict((k, v) for k, v in obj.__dict__.items()
-                                if not k.startswith('_') and getattr(obj, k) is not None)
+        setattr(self, key, value)
+
+    def to_json(self):
+        def default(obj):
+            """
+            filter out properties that have names starting with _ or properties that have a value of None
+            """
+            default_test = lambda item: not item[0].startswith('_') and item[1] is not None and item[1] != ''
+            try:
+                if obj.__tojson_dirty:
+                    item_test = lambda item: item[0] in obj.__tojson_dirty and default_test(item)
+                    if getattr(obj, 'Id', None) and int(obj.Id) > 0:
+                        obj.__tojson_dirty.add('Id')
+            except AttributeError:
+                item_test = default_test
+
+            items = filter(item_test, obj.__dict__.items())
+            return dict(items)
+
+        return json.dumps(self, default=default, sort_keys=True, indent=4)
 
 
 class FromJsonMixin(object):
@@ -59,13 +77,13 @@ class UpdateMixin(object):
     def save(self):
         qb = QuickBooks()
 
-        if self.Id and self.Id > 0:
+        if self.Id and int(self.Id) > 0:
             json_data = qb.update_object(self.qbo_object_name, self.to_json())
         else:
             json_data = qb.create_object(self.qbo_object_name, self.to_json())
 
         obj = type(self).from_json(json_data[self.qbo_object_name])
-        self.Id = obj.Id
+        self.Id = int(obj.Id)
 
         return obj
 
