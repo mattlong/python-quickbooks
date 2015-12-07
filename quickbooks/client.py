@@ -153,6 +153,8 @@ class QuickBooks(object):
         return session
 
     def make_request(self, request_type, url, request_body=None, content_type='application/json'):
+        _DEBUG = False
+
         if not request_body:
             request_body = {}
 
@@ -164,6 +166,11 @@ class QuickBooks(object):
             'Accept': 'application/json'
         }
 
+        if _DEBUG:
+            print(request_type, url)
+            if request_body is not None:
+                import pprint
+                print(pprint.pprint(request_body))
         req = self.session.request(request_type, url, True, self.company_id, headers=headers, data=request_body)
 
         try:
@@ -172,6 +179,9 @@ class QuickBooks(object):
             raise QuickbooksException("Error reading json response", 10000)
 
         if result.get("Fault"):
+            if _DEBUG:
+                import pprint
+                pprint.pprint(result)
             self.handle_exceptions(result["Fault"])
         elif req.status_code is not int(httplib.OK):
             raise QuickbooksException("Non-200 status code %s from request" % (req.status_code,))
