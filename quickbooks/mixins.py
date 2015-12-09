@@ -4,29 +4,13 @@ from .client import QuickBooks
 
 
 class ToJsonMixin(object):
-    def set(self, key, value):
-        try:
-            self.__tojson_dirty.add(key)
-        except AttributeError:
-            self.__tojson_dirty = set()
-            self.__tojson_dirty.add(key)
-
-        setattr(self, key, value)
-
     def to_json(self):
         def default(obj):
             """
             filter out properties that have names starting with _ or properties that have a value of None
             """
             default_test = lambda item: not item[0].startswith('_') and item[1] is not None and item[1] != ''
-            try:
-                if obj.__tojson_dirty:
-                    item_test = lambda item: item[0] in obj.__tojson_dirty and default_test(item)
-                    if getattr(obj, 'Id', None) and int(obj.Id) > 0:
-                        obj.__tojson_dirty.add('Id')
-            except AttributeError:
-                item_test = default_test
-
+            item_test = default_test
             items = filter(item_test, obj.__dict__.items())
             return dict(items)
 
