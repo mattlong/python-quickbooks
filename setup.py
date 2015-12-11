@@ -10,16 +10,16 @@ def read(*parts):
         return fp.read()
 
 
-VERSION = (0, 3, 2)
+VERSION = (0, 4, 1)
 version = '.'.join(map(str, VERSION))
 
 setup(
-    name='python-quickbooks',
+    name='python-quickbooks3',
     version=version,
-    author='Edward Emanuel Jr.',
-    author_email='edward@sidecarsinc.com',
-    description='A Python library for accessing the Quickbooks API.',
-    url='https://github.com/sidecars/python-quickbooks',
+    author='Matt Long',
+    author_email='matt@mattlong.org',
+    description='A Python library for accessing the Quickbooks API. Forked from https://github.com/sidecars/python-quickbooks to improve Python 3 compatibility. Thanks to Edward Emanuel Jr.',
+    url='https://github.com/mattlong/python-quickbooks',
     license='MIT',
     keywords=['quickbooks', 'qbo', 'accounting'],
     long_description=read('README.md'),
